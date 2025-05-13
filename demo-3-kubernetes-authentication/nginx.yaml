@@ -1,0 +1,19 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: demo3-app
+  namespace: demo3
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: demo3-app
+  template:
+    metadata:
+      labels:
+        app: demo3-app
+    spec:
+      serviceAccountName: demo3-sa  # <<< 
+      containers:
+      - name: app
+        image: nginx
