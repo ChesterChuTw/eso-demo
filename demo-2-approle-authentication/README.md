@@ -126,7 +126,7 @@ metadata:
   name: vault-ci-secret
   namespace: ${NAMESPACE}
 spec:
-  refreshInterval: "10m"
+  refreshInterval: "10s"
   secretStoreRef:
     name: vault-ci-store
     kind: SecretStore
