@@ -226,15 +226,15 @@ vault kv metadata delete secret/demo3/database || true
 echo "✅ Vault 設定已清除"
 
 echo "🗑 清除本地暫存檔案..."
-rm -f \
-  demo3-policy.hcl \
-  token-reviewer.yaml \
-  vault-auth-token.yaml \
-  vault-auth-token.jwt \
-  ca.crt \
-  nginx.yaml \
-  vault-secret-store.yaml \
-  demo3-external-secrets.yaml
+# rm -f \
+#   demo3-policy.hcl \
+#   token-reviewer.yaml \
+#   vault-auth-token.yaml \
+#   vault-auth-token.jwt \
+#   ca.crt \
+#   nginx.yaml \
+#   vault-secret-store.yaml \
+#   demo3-external-secrets.yaml
 
 echo "✅ 所有清除作業完成"
 

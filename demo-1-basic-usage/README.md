@@ -154,6 +154,8 @@ kubectl get secret sync-secret-1 -n $NAMESPACE -o jsonpath="{.data.demo-1-passwo
 ## Clean up script
 
 ```bash
+NAMESPACE=demo1
+
 vault kv metadata delete secret/demo-secret-1
 
 kubectl delete ns $NAMESPACE
