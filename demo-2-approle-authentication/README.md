@@ -56,14 +56,16 @@ vault policy write login-policy login-policy.hcl
 # 建立 Vault AppRole
 
 ## create role and bind policy
-### batch: 不可續期(延長TTL)，適合短期 Job
+###  token_ttl="20m" \                    # ← 🔹取得的 token 活 20 分鐘
+###  token_type="batch" \                # ← 🔹代表發出的 token 無法續期，輕量短命
+###  secret_id_ttl="10m" \               # ← 🔹secret_id 可使用 10 分鐘內
+###  secret_id_num_uses=3                # ← 🔹最多使用 3 次（超過就作廢）
 vault write auth/approle/role/$ROLE_NAME \
   token_policies="default,login-policy,ci-policy" \
-  token_ttl="20m" \                    # ← 🔹取得的 token 活 20 分鐘
-  token_max_ttl="1h" \                 # ← 🔸無效，因為是 batch token，不能續期
-  token_type="batch" \                # ← 🔹代表發出的 token 無法續期，輕量短命
-  secret_id_ttl="10m" \               # ← 🔹secret_id 可使用 10 分鐘內
-  secret_id_num_uses=3                # ← 🔹最多使用 3 次（超過就作廢）
+  token_ttl="20m" \
+  token_type="batch" \
+  secret_id_ttl="10m" \
+  secret_id_num_uses=3
 
 
 ## 取得 ROLE_ID & SECRET_ID
